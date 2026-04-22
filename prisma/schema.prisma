@@ -1,0 +1,70 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+enum TransactionType {
+  BUY
+  SELL
+}
+
+model User {
+  id           Int         @id @default(autoincrement())
+  email        String      @unique @db.VarChar(255)
+  passwordHash String      @map("password_hash") @db.VarChar(255)
+  role         UserRole    @default(USER)
+  createdAt    DateTime    @default(now()) @map("created_at")
+  portfolios   Portfolio[]
+
+  @@map("users")
+}
+
+model Portfolio {
+  id          Int       @id @default(autoincrement())
+  userId      Int       @map("user_id")
+  name        String    @db.VarChar(255)
+  description String?   @db.Text
+  createdAt   DateTime  @default(now()) @map("created_at")
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  holdings    Holding[]
+
+  @@index([userId])
+  @@map("portfolios")
+}
+
+model Holding {
+  id         Int           @id @default(autoincrement())
+  portfolioId Int          @map("portfolio_id")
+  symbol     String        @db.VarChar(16)
+  totalShares Float        @map("total_shares")
+  avgPrice   Float         @map("avg_price")
+  createdAt  DateTime      @default(now()) @map("created_at")
+  portfolio  Portfolio     @relation(fields: [portfolioId], references: [id], onDelete: Cascade)
+  transactions Transaction[]
+
+  @@index([portfolioId])
+  @@map("holdings")
+}
+
+model Transaction {
+  id              Int             @id @default(autoincrement())
+  holdingId       Int             @map("holding_id")
+  type            TransactionType
+  quantity        Float
+  price           Float
+  transactionDate DateTime        @map("transaction_date")
+  holding         Holding         @relation(fields: [holdingId], references: [id], onDelete: Cascade)
+
+  @@index([holdingId])
+  @@map("transactions")
+}
