@@ -23,19 +23,13 @@ Build command:
 npm install && npx prisma generate
 ```
 
-Pre-deploy command:
-
-```bash
-npx prisma migrate deploy && npx prisma db seed
-```
-
-This applies Prisma migrations and seeds the database automatically so sample data is available after deployment.
-
 Start command:
 
 ```bash
-npm start
+npx prisma migrate deploy && npx prisma db seed && npm start
 ```
+
+The start command applies Prisma migrations and seeds the database automatically so sample data is available after deployment. This keeps the Blueprint compatible with Render free tier services, where `preDeployCommand` is not supported.
 
 ## Public URLs
 
