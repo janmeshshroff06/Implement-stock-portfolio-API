@@ -124,15 +124,9 @@ async function createSeedUser(seedUser) {
 }
 
 async function main() {
-  const seedEmails = seedUsers.map((user) => user.email);
-
-  await prisma.user.deleteMany({
-    where: {
-      email: {
-        in: seedEmails,
-      },
-    },
-  });
+  await prisma.$executeRawUnsafe(
+    'TRUNCATE TABLE "transactions", "holdings", "portfolios", "users" RESTART IDENTITY CASCADE',
+  );
 
   for (const seedUser of seedUsers) {
     await createSeedUser(seedUser);
@@ -143,6 +137,10 @@ async function main() {
   console.log("admin@example.com / Password123!");
   console.log("investor@example.com / Password123!");
   console.log("not-owner@example.com / Password123!");
+  console.log("Deterministic seeded IDs:");
+  console.log("Admin: user 1, portfolio 1, holding 1, transaction 1");
+  console.log("Investor: user 2, portfolio 2, holdings 2 and 3, transactions 2 and 3");
+  console.log("Not owner: user 3, portfolio 3, holding 4, transaction 4");
 }
 
 main()
