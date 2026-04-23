@@ -172,10 +172,17 @@ Success Case:
 3. Click `Execute`.
 4. Expect `200 OK` with an array containing portfolio ID `2`.
 
+Result:
+<img width="1156" height="672" alt="image" src="https://github.com/user-attachments/assets/af21dace-9980-4296-84b1-efcb9fd71894" />
+
+
 401 Unauthorized:
 1. Click `Authorize`, then `Logout`.
 2. Run `GET /api/portfolios`.
 3. Expect `401 Unauthorized`.
+
+Result:
+
 
 ### POST /api/portfolios
 
