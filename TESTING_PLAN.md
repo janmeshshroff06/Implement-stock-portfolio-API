@@ -83,6 +83,9 @@ Success Case:
 4. Click `Execute`.
 5. Expect `201 Created` with `id`, `email`, `role`, and `createdAt`.
 
+Result:
+<img width="992" height="572" alt="image" src="https://github.com/user-attachments/assets/a9615c84-ec07-4fae-9b86-1332d5e36864" />
+
 400 Bad Request:
 1. Remove the `password` field:
 ```json
@@ -92,6 +95,9 @@ Success Case:
 ```
 2. Click `Execute`.
 3. Expect `400 Bad Request`.
+
+Result:
+<img width="465" height="262" alt="Screenshot 2026-04-23 at 9 37 18 AM" src="https://github.com/user-attachments/assets/7b1ebc8e-d3a1-4c5e-8e67-4776df9d41a2" />
 
 409 Conflict:
 1. Use an existing seed email:
@@ -103,6 +109,9 @@ Success Case:
 ```
 2. Click `Execute`.
 3. Expect `409 Conflict`.
+
+Result:
+<img width="522" height="276" alt="Screenshot 2026-04-23 at 9 38 40 AM" src="https://github.com/user-attachments/assets/81dd1b54-1784-4062-80b4-c3e8546e16a7" />
 
 ## POST /api/auth/login
 
@@ -120,6 +129,9 @@ Success Case:
 3. Click `Execute`.
 4. Expect `200 OK` with a `token`.
 
+Result:
+<img width="2760" height="496" alt="image" src="https://github.com/user-attachments/assets/89b17343-e854-46b5-b0dc-5c8f2da87071" />
+
 400 Bad Request:
 1. Remove the `password` field:
 ```json
@@ -129,6 +141,9 @@ Success Case:
 ```
 2. Click `Execute`.
 3. Expect `400 Bad Request`.
+
+Result:
+<img width="480" height="274" alt="Screenshot 2026-04-23 at 9 44 16 AM" src="https://github.com/user-attachments/assets/53e7f65a-da71-4380-bd3b-7ab913d125ce" />
 
 401 Unauthorized:
 1. Use the wrong password:
@@ -140,6 +155,10 @@ Success Case:
 ```
 2. Click `Execute`.
 3. Expect `401 Unauthorized`.
+
+Result:
+<img width="902" height="538" alt="image" src="https://github.com/user-attachments/assets/3859ebe8-5c0c-4419-a456-f8d3eea0fe86" />
+
 
 ## Portfolio Resource Tests
 
