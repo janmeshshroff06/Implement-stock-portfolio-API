@@ -62,6 +62,9 @@ Success Case:
   "status": "ok"
 }
 ```
+Result:
+<img width="838" height="502" alt="image" src="https://github.com/user-attachments/assets/39c82eb6-e05d-4416-8297-37939ebf9c15" />
+
 
 ## POST /api/auth/signup
 
