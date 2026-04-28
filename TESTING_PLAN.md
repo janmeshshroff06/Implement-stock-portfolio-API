@@ -2,6 +2,21 @@
 
 Use this plan in Swagger UI to verify deployment, authentication, CRUD operations, authorization, and error handling.
 
+## Project Overview
+### Technologies Used
+- Runtime: Node.js
+- Framework: Express.js
+- Database: PostgreSQL
+- ORM: Prisma ORM
+
+### Authentication
+The API utilizes JWT-based authentication.
+- To test protected routes, first log in via the POST /api/auth/login endpoint to receive a token.
+- Swagger UI supports Bearer token authorization. Click the "Authorize" button and enter your token as: Bearer <your_token>
+
+### Database Seeding
+The database is pre-seeded with deterministic test data to allow for immediate testing. The Render deployment is configured to automatically run migrations and the seed script on startup, ensuring the credentials and IDs listed below remain consistent.
+
 ## Submission Links
 
 - Public repository: `https://github.com/janmeshshroff06/Implement-stock-portfolio-API`
